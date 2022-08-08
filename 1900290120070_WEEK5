@@ -1,0 +1,29 @@
+'''Problem 1: Leet code No. 392 Name: Is Subsequence'''
+
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        for l in s:
+            if l not in t:
+                return False
+            i = t.find(l)
+            t = t[i+1:]
+        return True
+
+
+'''Problem 2: Leet code No.1043. Partition Array for Maximum Sum'''
+
+class Solution:
+    def maxSumAfterPartitioning(self, nums: List[int], k: int) -> int:
+        N = len(nums)
+
+        dp = [0] * (N + 1)
+        for start in reversed(range(N)):
+            maxi = float(-inf)
+            max_in_subarray = 0
+            for end in range(start, min(N, start + k)):
+                max_in_subarray = max(max_in_subarray, nums[end])
+                maxi = max(maxi, max_in_subarray * (end - start + 1) + dp[end + 1])
+            dp[start] = maxi
+
+        return dp[0]
+
