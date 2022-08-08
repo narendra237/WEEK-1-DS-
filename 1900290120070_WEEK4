@@ -1,0 +1,33 @@
+'''Problem 1: Leet code No. 5 Name: Longest Palindromic Substring '''
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+        start = end = 0
+        
+        for center in range(2*n - 1):
+            i = center // 2
+            j = i + center % 2
+            while i != -1 and j != n and s[i] == s[j]:
+                i -= 1
+                j += 1
+            
+            if j - (i + 1) > end - start:
+                start, end = i + 1, j
+        
+        return s[start:end]
+        
+'''Problem 2: Leet code No. 55 Name: Jump Game'''
+
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        if len(nums)==0:
+            return False
+        elif len(nums)==1:
+            return True
+        reach=nums[0]
+        for i in range(0,len(nums)):
+            if i>reach:
+                return False
+            reach=max(reach,i+nums[i])
+            
+        return True
