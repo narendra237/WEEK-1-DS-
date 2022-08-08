@@ -1,0 +1,45 @@
+'''1365. How Many Numbers Are Smaller Than the Current Number
+Easy
+
+3560
+
+73
+
+Add to List
+
+Share
+Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each nums[i] you have to count the number of valid j's such that j != i and nums[j] < nums[i].
+
+Return the answer in an array'''
+
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        i=0
+        l=len(nums)
+        out=[]
+        while(i<l):
+            count=0
+            for k in range(len(nums)):
+                if(k!=i):
+                    if(nums[i]>nums[k]):
+                        count+=1
+            out.append(count)
+            i+=1
+        return out
+       
+       
+
+
+'''4. Median of Two Sorted Arrays
+Hard
+
+18512
+
+2160
+
+Add to List
+
+Share
+Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+The overall run time complexity should be O(log (m+n)).'''
