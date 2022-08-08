@@ -1,0 +1,40 @@
+'''121. Best Time to Buy and Sell Stock
+Easy
+18679
+599
+Add to List
+Share
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.'''
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        p1, p2 = 0, 1
+        n = len(prices) - 1
+        largest = 0
+        
+        while p2 <= n:
+            if prices[p1] > prices[p2]:
+                p1 = p2
+                p2 += 1
+            else:
+                diff = prices[p2] - prices[p1]
+                largest = max(largest, diff)
+                p2 += 1
+                
+        return largest
+				
+				
+				
+				
+'''
+338. Counting Bits
+'''
+
+class Solution:
+    def countBits(self, n: int) -> List[int]:
+        ans = []
+        for i in range(0, n+1):
+            ans.append(str(bin(i)).count('1'))
+        return ans
